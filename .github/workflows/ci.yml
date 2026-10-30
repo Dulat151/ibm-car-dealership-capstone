@@ -1,0 +1,58 @@
+name: Full Stack Application CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  python-check:
+    name: Python Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r server/requirements.txt
+
+      - name: Check Django
+        working-directory: server
+        run: |
+          python manage.py check
+
+  javascript-check:
+    name: JavaScript Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install frontend dependencies
+        working-directory: server/frontend
+        run: npm ci
+
+      - name: Build React application
+        working-directory: server/frontend
+        run: npm run build
+        env:
+          CI: false
+
+      - name: Check Node.js syntax
+        run: node --check server/database/app.js
