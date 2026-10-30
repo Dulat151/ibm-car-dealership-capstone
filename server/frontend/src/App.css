@@ -1,38 +1,41 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+* { box-sizing: border-box; }
+body { margin: 0; background: #f4f6fa; color: #182235; font-family: Arial, sans-serif; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.topbar { min-height: 70px; background: #14243a; color: white; display:flex; align-items:center; justify-content:space-between; padding: 12px max(5vw, 20px); gap:20px; }
+.topbar nav { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.topbar button, .brand { color:white; background:transparent; border:0; padding:9px 12px; }
+.brand { font-weight:700; font-size:18px; }
+.welcome { color:#dce7f5; font-size:14px; }
+main { width:min(1100px, 90%); margin:38px auto; flex:1; }
+.hero { background:linear-gradient(120deg,#183a5b,#276b83); color:white; border-radius:18px; padding:80px 8%; min-height:360px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; }
+.hero h1 { font-size:clamp(32px,5vw,54px); max-width:650px; margin:8px 0; }
+.hero p { max-width:620px; line-height:1.6; }
+.eyebrow { color:#2c7890; font-size:12px; font-weight:bold; letter-spacing:2px; }
+.hero .eyebrow { color:#b7e4ee; }
+.primary { border:0; border-radius:8px; background:#176b87; color:white; padding:12px 18px; font-weight:600; }
+.hero .primary { background:white; color:#17445b; margin-top:15px; }
+.section-heading { display:flex; justify-content:space-between; align-items:end; gap:20px; flex-wrap:wrap; }
+h1 { margin:8px 0 20px; }
+.filter { display:flex; gap:8px; flex-wrap:wrap; }
+.filter input, input, textarea { border:1px solid #ccd4df; border-radius:7px; padding:11px; background:white; }
+.dealer-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:18px; margin-top:24px; }
+.dealer-card, .review-card, .form-card { background:white; border:1px solid #e0e5ec; border-radius:12px; padding:22px; box-shadow:0 4px 16px #172b440a; }
+.dealer-card h2 { margin-top:0; font-size:20px; }
+.dealer-card p { color:#586579; }
+.dealer-card button { margin-top:10px; }
+.review-card { margin:12px 0; }
+.review-card p { line-height:1.6; }
+.review-card small { color:#637087; }
+.form-card { display:flex; flex-direction:column; gap:16px; max-width:600px; }
+.form-card label { display:flex; flex-direction:column; gap:7px; font-weight:600; }
+.form-card textarea { min-height:110px; resize:vertical; }
+.form-card .check { flex-direction:row; align-items:center; font-weight:normal; }
+.form-card .check input { width:auto; }
+.auth-wrap { display:flex; justify-content:center; }
+.auth-card { width:min(440px,100%); }
+.text-button, .back { border:0; background:transparent; color:#176b87; padding:8px 0; text-align:left; }
+.notice { width:min(1100px,90%); margin:18px auto 0; background:#e6f3f6; color:#17445b; padding:12px 16px; border-radius:8px; }
+footer { text-align:center; color:#728095; padding:24px; font-size:13px; }
+@media(max-width:650px) { .topbar { align-items:flex-start; flex-direction:column; } .hero { padding:45px 7%; } }

@@ -1,13 +1,18 @@
-# from django.contrib import admin
-# from .models import related models
+from django.contrib import admin
+from .models import CarMake, CarModel
 
+class CarModelInline(admin.TabularInline):
+    model = CarModel
+    extra = 1
 
-# Register your models here.
+@admin.register(CarMake)
+class CarMakeAdmin(admin.ModelAdmin):
+    list_display = ("name", "description")
+    search_fields = ("name",)
+    inlines = [CarModelInline]
 
-# CarModelInline class
-
-# CarModelAdmin class
-
-# CarMakeAdmin class with CarModelInline
-
-# Register models here
+@admin.register(CarModel)
+class CarModelAdmin(admin.ModelAdmin):
+    list_display = ("name", "make", "type", "year")
+    list_filter = ("make", "type", "year")
+    search_fields = ("name", "make__name")
